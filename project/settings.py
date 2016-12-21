@@ -9,6 +9,8 @@ INSTALLED_APPS = ["demo"] + INSTALLED_APPS
 DEMO = {
 }
 
+ALLOWED_HOSTS = ["*"]
+
 # Typically used in actual deploys
 try:
     import settings_local
