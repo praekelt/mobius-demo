@@ -15,7 +15,7 @@ def get_long_description():
 
 
 setup(
-    name="mobius-demo",
+    name="mobius",
     version="0.1",
     description="A demo Mobius project that illustrates all the components",
     long_description = get_long_description(),
