@@ -1,0 +1,10 @@
+include AUTHORS.rst
+include CHANGELOG.rst
+include LICENSE
+include README.rst
+include setup-development.sh
+recursive-include scripts *
+recursive-include demo/static *
+recursive-include demo/fixtures *
+recursive-include demo/migrations *
+recursive-include demo/management *
