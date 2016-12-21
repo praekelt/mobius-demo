@@ -9,18 +9,6 @@ INSTALLED_APPS = ["demo"] + INSTALLED_APPS
 DEMO = {
 }
 
-# Until Salt drives settings_local we need this in here
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "mobius",
-        "USER": "mobius",
-        "PASSWORD": "afdc6b255",
-        "HOST": "10.10.0.1",
-        "PORT": "5432",
-    }
-}
-
 # Typically used in actual deploys
 try:
     import settings_local
