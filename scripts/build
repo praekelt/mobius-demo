@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+whoami
 pushd $REPO
 nvm install && npm install && npm run build
 popd
