@@ -1,7 +1,5 @@
 #!/bin/bash
 
-echo xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-whoami
 pushd $REPO
 source ~/.nvm/nvm.sh
 nvm install
