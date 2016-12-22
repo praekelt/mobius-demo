@@ -1,5 +1,9 @@
 #!/bin/bash
 
+pushd $REPO
+nvm install && npm install && npm run build
+popd
+
 cp -a $REPO ./build/
 
 ${PIP} install -r $REPO/requirements/requirements.txt
