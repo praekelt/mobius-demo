@@ -3,7 +3,7 @@
 echo xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 whoami
 pushd $REPO
-nvm install && npm install && npm run build
+su - ubuntu -c "source /home/ubuntu/.nvm/nvm.sh" && nvm install && npm install && npm run build
 popd
 
 cp -a $REPO ./build/
