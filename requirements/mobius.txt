@@ -1,4 +1,4 @@
-# This file contains a set of modules guaranteed to work together. You may
+
 # edit it if you have to change a version of a module. Add new modules in
 # requirements.txt.
 
@@ -15,6 +15,7 @@
 -e git+https://github.com/praekelt/mote.git@develop#egg=mote
 -e git+https://github.com/praekelt/django-ultracache.git#egg=django-ultracache
 -e git+https://github.com/praekelt/django-preferences.git#egg=django-preferences
+-e git+https://github.com/praekelt/django-form-renderers.git#egg=django-form-renderers
 
 Django>=1.9.6,<1.10
 django-category==1.9
@@ -50,4 +51,3 @@ kombu==4.0.0
 django-crum==0.7.1
 django-layers-hr==1.10.0
 django-simplemde==0.0.9
-django-form-renderers==0.3
