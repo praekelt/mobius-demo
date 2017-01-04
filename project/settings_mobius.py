@@ -12,8 +12,6 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
-
 INSTALLED_APPS = (
     # The order is important
     "mobius",
@@ -21,16 +19,18 @@ INSTALLED_APPS = (
     "photologue",
     "category",
     "django_comments",
+    "form_renderers",
     "likes",
     "link",
     "listing",
     "mote",
     "navbuilder",
     "formfactory",
-    "secretballot",
     "pagination",
     "post",
     "preferences",
+    "secretballot",
+    "simplemde",
     "sites_groups",
 
     # Django apps can be alphabetic
