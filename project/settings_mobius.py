@@ -198,4 +198,4 @@ WEBPACK_LOADER = {
     }
 }
 
-FORM_RENDERERS = {"enable-bem-classes": True, "replace-as-p": True}
+FORM_RENDERERS = {"enable-bem-classes": True, "replace-as-p": True, "replace-as-table": True}
