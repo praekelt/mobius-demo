@@ -15,9 +15,9 @@ def get_long_description():
 
 
 setup(
-    name="mobius-demo",
+    name="demo",
     version="0.1",
-    description="A demo Mobius project that illustrates all the components",
+    description="Create a Mobius project environment quickly.",
     long_description = get_long_description(),
     author="Praekelt Consulting",
     author_email="dev@praekelt.com",

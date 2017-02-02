@@ -18,8 +18,10 @@ INSTALLED_APPS = (
     "jmbo",
     "photologue",
     "category",
+    "composer",
     "django_comments",
     "form_renderers",
+    "formtools",
     "likes",
     "link",
     "listing",
@@ -32,6 +34,9 @@ INSTALLED_APPS = (
     "secretballot",
     "simplemde",
     "sites_groups",
+
+    # TODO: Remove nested_admin once the UI is built
+    "nested_admin",
 
     # Django apps can be alphabetic
     "django.contrib.admin",
@@ -60,6 +65,7 @@ MIDDLEWARE_CLASSES = (
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "pagination.middleware.PaginationMiddleware",
+    "composer.middleware.ComposerFallbackMiddleware",
     "likes.middleware.SecretBallotUserIpUseragentMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "crum.CurrentRequestUserMiddleware",
@@ -74,6 +80,8 @@ TEMPLATE_CONTEXT_PROCESSORS = [
     "django.core.context_processors.tz",
     "django.core.context_processors.request",
     "django.contrib.messages.context_processors.messages",
+    "composer.context_processors.slots",
+    "preferences.context_processors.preferences_cp"
 ]
 
 TEMPLATES = [
@@ -114,6 +122,7 @@ USE_L10N = True
 USE_TZ = True
 
 STATIC_URL = "/static/"
+STATIC_ROOT=  "/static/"
 
 SITE_ID = 1
 
@@ -198,4 +207,10 @@ WEBPACK_LOADER = {
     }
 }
 
-FORM_RENDERERS = {"enable-bem-classes": True, "replace-as-p": True, "replace-as-table": True}
+FORM_RENDERERS = {"enable-bem-classes": True}
+
+# The default layers config has basic -> web
+LAYERS = {"tree": ["basic", ["web"]]}
+
+# The default value of ALLOWED_HOSTS gets in the way, so change
+ALLOWED_HOSTS = ["*"]

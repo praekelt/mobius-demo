@@ -2,17 +2,10 @@ sudo: false
 language: python
 cache: pip
 
-cache:
-  yarn: true
-  directories:
-    - node_modules
-
 env:
-  - TOXENV=django19
+  - TOXENV=django19-travis
 
 install:
-  - nvm install
-  - npm run build
   - pip install tox
 
 script: tox
