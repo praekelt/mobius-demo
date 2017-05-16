@@ -12,7 +12,11 @@ env:
   - TOXENV=django19-travis
 
 install:
+  - nvm install
+  - npm install
+  - npm run build
   - pip install tox
+  - pip install coveralls
 
 script: tox
 
