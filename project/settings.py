@@ -32,7 +32,7 @@ CELERY_BROKER_URL = os.environ.get("CELERY_BROKER_URL", "amqp://myuser:mypasswor
 CELERY_RESULT_BACKEND = os.environ.get("CELERY_RESULT_BACKEND", "amqp://myuser:mypassword@localhost:5672//")
 
 RAVEN_CONFIG = {
-    'dsn': os.environ.get("RAVEN_DSN", ""),
+    'dsn': os.environ.get("RAVEN_DSN"),
 }
 
 MEDIA_ROOT = "/var/praekelt/media"
