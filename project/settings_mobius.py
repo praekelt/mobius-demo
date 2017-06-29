@@ -214,5 +214,6 @@ LAYERS = {"tree": ["basic", ["web"]]}
 ALLOWED_HOSTS = ["*"]
 
 ULTRACACHE = {
-    "drf": {"viewsets": {"*": {}}}
+    "drf": {"viewsets": {"*": {"timeout": 1}}}
+
 }

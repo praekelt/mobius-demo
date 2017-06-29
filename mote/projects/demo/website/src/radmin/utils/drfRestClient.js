@@ -45,7 +45,7 @@ export default (apiUrl, httpClient = fetchJson) => {
             break;
         }
         case GET_ONE:
-            url = `${apiUrl}/${resource}/${params.id}`;
+            url = `${apiUrl}/${resource}/`;
             break;
         case GET_MANY: {
             const query = {
@@ -62,7 +62,7 @@ export default (apiUrl, httpClient = fetchJson) => {
                 range: JSON.stringify([(page - 1) * perPage, (page * perPage) - 1]),
                 filter: JSON.stringify({ ...params.filter, [params.target]: params.id }),
             };
-            url = `${apiUrl}/${resource}?${queryParameters(query)}`;
+            url = `${apiUrl}/${resource}/${target}/`;
             break;
         }
         case UPDATE:
@@ -103,7 +103,7 @@ export default (apiUrl, httpClient = fetchJson) => {
             // }
             return {
                 data: json,
-                total: 1,
+                total: 2,
             };
         case CREATE:
             return { data: { ...params.data, id: json.id } };

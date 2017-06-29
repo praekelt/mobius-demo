@@ -20,7 +20,7 @@ const httpClient = (url, options = {}) => {
 
 ReactDOM.render(
     <Admin restClient={drfRestClient('/api/v1', httpClient)} authClient={authClient}>
-        <Resource name="post-post" list={PostList}/>
+        <Resource name="listing-listing" list={PostList}/>
     </Admin>,
     radminRootEl
 )
