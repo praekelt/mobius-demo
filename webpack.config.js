@@ -66,7 +66,8 @@ const BASE_CONFIG = {
         ],
         modulesDirectories: [
             'node_modules',
-            ProjectPaths.src + '/patterns'
+            ProjectPaths.src + '/patterns',
+            ProjectPaths.src
         ]
     },
     module: {

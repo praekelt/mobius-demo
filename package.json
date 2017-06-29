@@ -41,5 +41,11 @@
     "webpack-merge": "^0.15.0",
     "webpack-validator": "^2.2.9",
     "yargs": "^6.4.0"
+  },
+  "dependencies": {
+    "admin-on-rest": "^1.2.0",
+    "babel-preset-react": "^6.24.1",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
   }
 }
