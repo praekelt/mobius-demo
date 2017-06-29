@@ -43,7 +43,7 @@
         "block-spacing": ["error", "always"],
         "comma-style": ["error", "last"],
         "comma-spacing": ["error", { "before": false, "after": true }],
-        "indent": ["error", 4, {"SwitchCase": 1}],
+        // "indent": ["error", 4, {"SwitchCase": 1}],
         "no-ternary": [0],
         "padded-blocks": ["error", "never"],
         "semi-spacing": ["error"],

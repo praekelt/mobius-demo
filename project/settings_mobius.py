@@ -131,9 +131,9 @@ REST_FRAMEWORK = {
     "DEFAULT_METADATA_CLASS": "rest_framework.metadata.SimpleMetadata",
     "DEFAULT_VERSIONING_CLASS": "rest_framework.versioning.URLPathVersioning",
     "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
         "rest_framework.authentication.SessionAuthentication",
         "rest_framework.authentication.BasicAuthentication",
-        "rest_framework_jwt.authentication.JSONWebTokenAuthentication",
     ),
 }
 
@@ -212,3 +212,7 @@ LAYERS = {"tree": ["basic", ["web"]]}
 
 # The default value of ALLOWED_HOSTS gets in the way, so change
 ALLOWED_HOSTS = ["*"]
+
+ULTRACACHE = {
+    "drf": {"viewsets": {"*": {}}}
+}
