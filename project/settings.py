@@ -1,9 +1,16 @@
+import sys
+
 from project.settings_mobius import *
 
 
 # Our app must be first
 INSTALLED_APPS = list(INSTALLED_APPS)
 INSTALLED_APPS = ["demo"] + INSTALLED_APPS
+
+# todo: make below better and generic
+MOTE = {
+    "directories": [i for i in sys.path if i.find("mote.lib.base") != -1]
+}
 
 # Configuration for our app
 DEMO = {
@@ -22,7 +29,7 @@ else:
         lcl.update(**di)
 
 # Use a cached template loader if not in debug mode
-if DEBUG:
+if not DEBUG:
     loaders = TEMPLATES[0]["OPTIONS"]["loaders"]
     TEMPLATES[0]["OPTIONS"]["loaders"] = \
         [("django.template.loaders.cached.Loader", loaders)]
