@@ -2,12 +2,31 @@ sudo: false
 language: python
 cache: pip
 
+services:
+  - docker
+
 env:
+  global:
+  - secure: "Pc7A+uJ24IyKOmHeiySzJTCLo3H6T8IpXBIAsXlk+d2rGF0d7ENOD8ipswz8aQ8igCTSyurJ6wsSzQjf5MtjyglpY0+Ajw3vcJ+yf7u/w2wcjtnzs4xdS4Q9VhXAGLe0Qf5Gp/4xARsMPvDUR8n+bChFyzdmmYNQNsKdYEfORX4UHv9hUeYShMyMmT+NALk4ailmH2O/uizTv0dXK8Xw0qOfXF1Xa36WaOTnlpFBp2B1yMAgQSRxkwBt945ndy2zYsfkQr0/2NnCYWgGoGmPx2/GN5T+oEV2N2Xo492btWd3192p7T1jAV/e0X4rpnyR5qJLiR+YKUsZuT16BGXgeklPgivMgiB+uEqn6g10B+rXT1v1RZTtt5LAwyU3K5U959oxhiEZDG8ue057VkX33EQgLBGrwZttKENiy55ShCm1B3ipRsYVwFCO2lazPURpoHAUspXEK5SSd11xuME+D0aQIqUErLMAIaM0JQbKbn1+Lmu7EEcZiIja/70yDHxhM/ursEcOgHxDcvlQr/rh2OJzWgzVL0NcVNxbbKtvs4dG3+B6aolxQtBar5RJp3Bap3sGwHWRKyvj3Kqd+UkeZO3oeyiUNd50I4Ezh7Zmr3JHN46o9eQhvsCu0K7Na8mRMeO0qtWn41wnmoMQrTnut5lmxMB+ScVNxzCUxX/sDq4=" #Docker_Username
+  - secure: "UgPmc8ycUb92Ed68gOEH1xNTD6y6BXP1BitjSrIyDYhVEpNqHwVkqzN/DxexuzeawlXf390pp9oJ3SnD1Qccjxg1MEcYBUSZ10moZfYrPa1Rtowym6rxJT5SrKSsBAYB/J0XMzYUY80RkpKplKY2Gj4UEDjq/ga5SVbx66tyOp26Ms8rUAO0T6rFuezk9fJPHeeDQvruDitfMEkjZW47PnEQnfVNlHuwxN0U6OYpTVQk/hCQCaVt3eUtIcncoDv1OTcQVTOFNeg24of9obKMW8luNbNNmpCtuQ7iwZkmaw7XmmtEzO+4h22im9TjPwueWfsB2fqXeoCDk2uXZQ9At7w/sOLRCSYhesxZCj6Dox28gr/O21CndJcdQPG0vuCxXvA76VjwT5yVWH1oPQofsn1T7o78GS8SGneq6Txti9yfL5l9itrugKw+ut7Suv4YD6xPcjzABc2Xa99g6QK+4VBA7W01tSEiLXQhDXpN0d3PfC3E89EQnb8abXvl/VKtylq9i84Ykurb53cCmpIc0aslf3F4RP+zlNm+BAmVy4x+ARjbULYzAEsUceZz02ZY9GSG5HAbFsJ5FJ33eX1oB7WUQClZclxCrkPSlbTc5TjliMkCrfVpipRrZorcsUxhzqSuB81E1KQBjVDIIDFAPtoRs9piXwW3haiBvKvpH4U=" #Dockre_pass
   - TOXENV=django19-travis
   - TOXENV=django110-travis
   - TOXENV=django111-travis
 
 install:
+  - nvm install
+  - npm install
+  - npm run build
   - pip install tox
+  - pip install coveralls
 
 script: tox
+
+after_success:
+  - coveralls
+  - export TRAVIS_BRANCH_CLEAN=`echo $TRAVIS_BRANCH | sed 's/\//-/g'`
+  - docker login -u $DOCKER_USER -p $DOCKER_PASS cloud.canister.io:5000
+  - export REPO=cloud.canister.io:5000/praekeltconsulting/mobius-demo
+  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH_CLEAN ; fi`
+  - docker build -t $REPO:$TAG .
+  - docker push $REPO
