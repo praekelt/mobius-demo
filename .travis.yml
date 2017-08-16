@@ -29,4 +29,4 @@ after_success:
   - export REPO=praekeltcom/mobius-demo
   - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH_CLEAN ; fi`
   - docker build -t $REPO:$TAG .
-  - docker push $REPO
+  - docker push $REPO:$TAG
