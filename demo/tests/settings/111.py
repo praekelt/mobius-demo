@@ -12,8 +12,6 @@ SECRET_KEY = "SECRET_KEY_PLACEHOLDER"
 
 DEBUG = True
 
-TEMPLATE_DEBUG = True
-
 ALLOWED_HOSTS = []
 
 INSTALLED_APPS = (
@@ -110,7 +108,7 @@ WSGI_APPLICATION = "project.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
         "NAME": "test",
         "USER": "postgres",
         "PASSWORD": "",

@@ -42,8 +42,8 @@ RAVEN_CONFIG = {
     'dsn': os.environ.get("RAVEN_DSN"),
 }
 
-MEDIA_ROOT = "/var/praekelt/media"
-STATIC_ROOT = "/var/praekelt/static"
+MEDIA_ROOT = os.environ.get("MEDIA_ROOT", "%s/media/" % BASE_DIR)
+STATIC_ROOT = os.environ.get("STATIC_ROOT", "/static/")
 
 DEBUG = os.environ.get("DEBUG", False)
 
