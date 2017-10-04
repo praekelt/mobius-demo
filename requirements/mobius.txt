@@ -3,6 +3,7 @@
 # requirements.txt.
 
 -e git+https://github.com/praekelt/mobius.git@develop#egg=mobius
+-e git+https://github.com/praekelt/django-cache-headers.git@feature/remove-isauthenticated#egg=django-cache-headers
 
 Django>=1.11,<1.12
 
@@ -13,7 +14,7 @@ billiard==3.5.0.2
 cached-property==1.2.0
 celery==4.0.0
 contextlib2==0.5.4
-django-cache-headers>=0.2,<0.3
+#django-cache-headers>=0.2,<0.3
 django-category>=1.9,<2.0
 django-composer-prk>=0.1,<0.2
 django-contrib-comments==1.7.1
