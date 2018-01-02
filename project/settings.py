@@ -9,6 +9,31 @@ INSTALLED_APPS = ["demo"] + INSTALLED_APPS
 DEMO = {
 }
 
+CACHE_HEADERS = {
+    "timeouts": {
+        "all-users": {
+            600: (
+                "^/all-users/",
+            ),
+        },
+        "anonymous-only": {
+            600: (
+                "^/anonymous-only/",
+            ),
+        },
+        "anonymous-and-authenticated": {
+            600: (
+                "^/anonymous-authenticated/",
+            ),
+        },
+        "per-user": {
+            600: (
+                "^/per-user/",
+            ),
+        },
+    }
+}
+
 # Typically used in actual deploys
 try:
     import settings_local
