@@ -3,14 +3,9 @@ language: python
 cache: pip
 
 services:
-  - docker
-
+  - redis-server
+  
 env:
-  global:
-  - secure: "swIy7bAE4rWsymjP0O+iKP2jeOp1vyrbhuBtQBY6k8AA55tiH7UQtlwsf4ucU5d+Dn7MnPiWt9RTAPRmwZJqZdtIMgzlA4r/Q+7fu8BQrH1x/1xIfRExzJ2kdDUJDw7TqHzfzMocjjxbWvC6nr45liCMy0LGN+zyDzkkIVvarpPi98IsS1/WdkQeJgQRRzywnXFTPEriZpJFRX8Pm0Qd2xiQJNCv5qTBwZKe4clQHUqY4T9uyKsyvIC4SQ/PaYcHzVZ//tRWDCVJCylvpsOjenBLU3njwMZpt+nuvSZ05vWOE4ijCdbyUfoB2wL69Z5qPZgSXSnHW6ZZioxgF05hO3bFbiFqoUR/AnPhzGhX5Rba3+Yv7Z2lswYXBAjuuvfasOcJghk09LTi0VbpD0fYfa4WzvC48KQwbPGcXqKFvDZuh4Eur9959MM934qvQQ5ffcOuMMZwFnLLPgOq3YWLl6cwXL3ZRVNYhQ8cgL50PaEizSJ4kl01cLntesVQ4kBX3loo5xvzkWSi4w+SwprMawe0RDhx2NGLXYV24bVCKf+JhxFnJC4c4nj2+REDOnVMdHEi3GyKUzHS9kRK6JfsFdycLshizJxPW2K0TnceIpxakUs7wCMyzvMwxIqLvT5f7PAivl8DJvqnOT7HULNQSj2bm8KwTOjyEiGMthCEIqw=" #DOCKER_USER
-  - secure: "jddpJfpzKnWfb9EvgeSVyiH2APapAmiX9JqqvXPA5/1W9oo8fs+1w+vHvY3QkfMMXk3iFKI4k0VJDu4n42asKlVGXgjRCDhaxjt/XEEMCK16ztrb9SW2IBp/6PIE5eXqGVmb+P1aYmgdLYV6QEjnFaVHm8J46TC8HGr8Y5K90zx78u+GK89UqAsIrnBiwq3WfvKkoGGioWb4+jgtBzlFmzmcxq88Cea9WEt3WwC8j+UC+ajyBT7S/wLyJtU9bXYHj46w9tb7Cav6FSuNdqXF+KPrd6mN9CKGjgT5OT4EmOzRvYOqVJnKDmMJLLjajelAn9xbBanXG/gw+MS8U50P1+As2cUJKl5pqFnXNH7LKjHc/P4Rs3QocphlvZetKOKiU6lR8Tl6Mqrs16Fg6ahWoB/21pPuxQe7LlxCUInsqdfsOibHbnaSv4ng0Htjjc20eHMvD4AgoQE4A1g3kvWR4TY7uikLrtkG6tk/ns9wsOd2xlUrfkEP20uArJGTMU0u2ss/KCJ6C/0+FweplU3NKwLzsHPZkKkOITyUvcF2WNYs8WU9AQQOpt0fXqi+SWZbnIuvfwjyOUyknujJlZ5rJtz0SR1hHzi5pGJLUhmgccfTzVPjJw9k6PoxdPIgZZ/CvVj6JZieRl1Qy6JvmJN2e7dpsOivKU3S00waa8oYRnI=" #DOCKER_PASS
-  - TOXENV=django19-travis
-  - TOXENV=django110-travis
   - TOXENV=django111-travis
 
 install:
@@ -18,15 +13,5 @@ install:
   - npm install
   - npm run build
   - pip install tox
-  - pip install coveralls
 
 script: tox
-
-after_success:
-  - coveralls
-  - export TRAVIS_BRANCH_CLEAN=`echo $TRAVIS_BRANCH | sed 's/\//-/g'`
-  - docker login -u $DOCKER_USER -p $DOCKER_PASS
-  - export REPO=praekeltcom/mobius-demo
-  - export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo $TRAVIS_BRANCH_CLEAN ; fi`
-  - docker build -t $REPO:$TAG .
-  - docker push $REPO:$TAG
