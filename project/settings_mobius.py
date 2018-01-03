@@ -235,3 +235,8 @@ CHANNEL_LAYERS = {
         "ROUTING": "demo.channels.routing.channel_routing",
     }
 }
+
+ULTRACACHE = {
+    "purge": {"method": "ultracache.purgers.broadcast"},
+    "consider-cookies": ["sessionid", "messages", "isauthenticated"]
+}
