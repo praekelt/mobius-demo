@@ -23,7 +23,7 @@ CACHE_HEADERS = {
         },
         "anonymous-and-authenticated": {
             600: (
-                "^/anonymous-authenticated/",
+                "^/anonymous-and-authenticated/",
             ),
         },
         "per-user": {
