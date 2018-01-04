@@ -5,7 +5,7 @@
 -e git+https://github.com/praekelt/mobius.git@develop#egg=mobius
 
 # Experimental branch
--e git+https://github.com/praekelt/django-ultracache.git@feature/path-request-headers#egg=django-ultracache
+-e git+https://github.com/praekelt/django-ultracache.git@develop#egg=django-ultracache
 
 Django>=1.11,<1.12
 
