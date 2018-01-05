@@ -1,0 +1,9 @@
+This view was rendered on {% now "jS F Y H:i:s" %}<br />
+This view is cached once for anonymous users and once for authenticated users.<br />
+{% if request.user.is_anonymous %}
+    You are anonymous
+{% else %}
+    You are authenticated.
+{% endif %}
+<br />
+object = {{ object.title }}

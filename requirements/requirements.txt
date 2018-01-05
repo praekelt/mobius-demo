@@ -2,5 +2,3 @@
 
 -r mobius.txt
 psycopg2==2.6.1
--e git+https://github.com/praekelt/mote.lib.base@develop#egg=mote.lib.base
--e git+https://github.com/praekelt/mote@develop#egg=mote

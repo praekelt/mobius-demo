@@ -1,0 +1,15 @@
+{% load ultracache_tags %}
+
+{% if request.user.is_anonymous %}
+    {% ultracache 600 "anonymous-only" %}
+        This view was rendered on {% now "jS F Y H:i:s" %}<br />
+        This view is cached only for anonymous users.<br />
+        You are anonymous<br />
+        object = {{ object.title }}
+    {% endultracache %}
+{% else %}
+    This view was rendered on {% now "jS F Y H:i:s" %}<br />
+    This view is cached only for anonymous users.<br />
+    You are logged in as {{ request.user.id }}<br />
+    object = {{ object.title }}
+{% endif %}
