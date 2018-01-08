@@ -23,7 +23,7 @@ class AllUsersView(TemplateView):
 
     def get_context_data(self, **kwargs):
         di = super(AllUsersView, self).get_context_data(**kwargs)
-        di["object"] = TrivialContent.objects.get(id=1)
+        di["object"] = TrivialContent.objects.get(slug="all-users")
         return di
 
 
@@ -34,7 +34,7 @@ class AnonymousOnlyView(TemplateView):
 
     def get_context_data(self, **kwargs):
         di = super(AnonymousOnlyView, self).get_context_data(**kwargs)
-        di["object"] = TrivialContent.objects.get(id=2)
+        di["object"] = TrivialContent.objects.get(slug="anonymous-only")
         return di
 
 
@@ -46,7 +46,7 @@ class AnonymousAndAuthenticatedView(TemplateView):
 
     def get_context_data(self, **kwargs):
         di = super(AnonymousAndAuthenticatedView, self).get_context_data(**kwargs)
-        di["object"] = TrivialContent.objects.get(id=3)
+        di["object"] = TrivialContent.objects.get(slug="anonymous-and-authenticated")
         return di
 
 
@@ -58,5 +58,5 @@ class PerUserView(TemplateView):
 
     def get_context_data(self, **kwargs):
         di = super(PerUserView, self).get_context_data(**kwargs)
-        di["object"] = TrivialContent.objects.get(id=4)
+        di["object"] = TrivialContent.objects.get(slug="per-user")
         return di

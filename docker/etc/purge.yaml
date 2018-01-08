@@ -1,0 +1,3 @@
+proxy-address: localhost:6081
+domain: docker:6081
+logfile: /tmp/purge.log
