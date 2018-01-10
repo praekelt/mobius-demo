@@ -5,9 +5,9 @@ RUN apt-get install -y python-pip libpq-dev python-virtualenv \
 libjpeg-dev zlib1g-dev git-core libxslt1-dev redis-server rabbitmq-server nginx \
 supervisor varnish memcached net-tools npm wget vim
 COPY ./requirements /var/app/requirements/
-RUN pip install -r requirements/requirements.txt
+RUN pip install --no-cache-dir -r requirements/requirements.txt
 RUN virtualenv /var/twisted-ve
-RUN /var/twisted-ve/bin/pip install --upgrade django-ultracache-twisted
+RUN /var/twisted-ve/bin/pip install --no-cache-dir --upgrade django-ultracache-twisted
 COPY . /var/app/
 COPY ./docker/etc /etc/
 RUN python manage.py migrate --noinput
