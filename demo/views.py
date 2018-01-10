@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.utils.decorators import method_decorator
 from django.views.generic import TemplateView
 from django.views.generic.edit import FormView
@@ -60,3 +61,10 @@ class PerUserView(TemplateView):
         di = super(PerUserView, self).get_context_data(**kwargs)
         di["object"] = TrivialContent.objects.get(slug="per-user")
         return di
+
+
+def modify_trivial_content(request, pk):
+    """Trivial modification to trigger ultracache expiration"""
+
+    TrivialContent.objects.get(pk=pk).save()
+    return HttpResponse("Modified %s" % pk)

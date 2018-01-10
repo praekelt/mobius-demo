@@ -3,6 +3,7 @@ from django.views.generic.base import TemplateView
 
 from demo import views
 
+
 urlpatterns = [
     url(
         r"^$",
@@ -28,5 +29,10 @@ urlpatterns = [
         r"^per-user/$",
         views.PerUserView.as_view(),
         name="per-user"
+    ),
+    url(
+        r"^modify/(?P<pk>\d+)/$",
+        views.modify_trivial_content,
+        name="modify-trivial-content"
     ),
 ]
