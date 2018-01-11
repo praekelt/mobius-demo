@@ -7,4 +7,4 @@ This view is cached once for anonymous users and once for authenticated users.<b
 {% endif %}
 <br />
 object = {{ object.title }}<br />
-To expire this page edit the Trivial Content object called {{ object.title }}.
+To expire this page edit the Trivial Content object called {{ object.title }}  <a href="{% url "demo:modify-trivial-content" 3 %}">now</a>.

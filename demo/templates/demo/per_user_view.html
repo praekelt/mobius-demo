@@ -2,4 +2,4 @@ This view was rendered on {% now "jS F Y H:i:s" %}<br />
 This view is cached per user.<br />
 You are logged in as {{ request.user.id }}<br />
 object = {{ object.title }}<br />
-To expire this page edit the Trivial Content object called {{ object.title }}.
+To expire this page edit the Trivial Content object called {{ object.title }} <a href="{% url "demo:modify-trivial-content" 4 %}">now</a>.
